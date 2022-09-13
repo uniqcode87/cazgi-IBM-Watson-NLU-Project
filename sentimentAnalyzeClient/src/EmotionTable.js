@@ -7,15 +7,22 @@ class EmotionTable extends React.Component {
       return (  
         <div>
           <table className="table table-bordered">
+            <thead>
+                <th>Emotion</th>
+                <th>Confidence</th>
+            </thead>
             <tbody>
             {
               Object.entries(this.props.emotions).map(function(mapentry) {
-                return (
-                    <tr>
-                    <td>{mapentry[0]}</td>
-                    <td>{mapentry[1]}</td>
-                    </tr>
-                )
+                    if (mapentry[0] !== "success") {
+                        return (
+                                <tr>
+                                <td>{mapentry[0]}</td>
+                                <td>{mapentry[1]}</td>
+                                </tr>
+                        );
+                    }
+                    return "";
                 })
             }
             </tbody>
